@@ -80,9 +80,9 @@ export default function JournalsPage() {
 return (
   <AppLayout>
     <div className="max-w-3xl">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">My Journals</h1>
-        <div className="flex gap-2">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+      <h1 className="text-2xl md:text-3xl font-bold">My Journals</h1>
+      <div className="flex gap-2">
           <button
             onClick={handleGetInsights}
             disabled={insightsLoading}

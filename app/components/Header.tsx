@@ -21,27 +21,30 @@ function subscribe(callback: () => void) {
   };
 }
 
-export default function Header() {
+interface HeaderProps {
+  onMenuClick: () => void;
+}
+
+export default function Header({ onMenuClick }: HeaderProps) {
   const router = useRouter();
   const userName = useSyncExternalStore(subscribe, getUserName, function() { return null; });
 
-  const handleLogout = function() {
+  function handleLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     router.push("/login");
-  };
+  }
 
   return (
     <header className="bg-white shadow">
-      <div className="px-8 py-4 flex justify-between items-center">
-        <h1 onClick={function() { router.push("/journals"); }} className="text-xl font-bold text-blue-600 cursor-pointer">
-          MindJournal
-        </h1>
-        <div className="flex items-center gap-4">
-          <span className="text-gray-600">{userName ? "Hi, " + userName : ""}</span>
-          <button onClick={handleLogout} className="text-gray-600 hover:text-gray-800">
-            Logout
-          </button>
+      <div className="px-4 md:px-8 py-4 flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <button onClick={onMenuClick} className="md:hidden text-gray-600 text-2xl">☰</button>
+          <h1 onClick={function() { router.push("/journals"); }} className="text-xl font-bold text-blue-600 cursor-pointer">MindJournal</h1>
+        </div>
+        <div className="flex items-center gap-2 md:gap-4">
+          <span className="text-gray-600 text-sm md:text-base">{userName ? "Hi, " + userName : ""}</span>
+          <button onClick={handleLogout} className="text-gray-600 hover:text-gray-800 text-sm md:text-base">Logout</button>
         </div>
       </div>
     </header>
