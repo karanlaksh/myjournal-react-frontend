@@ -86,7 +86,7 @@ return (
           <button
             onClick={handleGetInsights}
             disabled={insightsLoading}
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 disabled:bg-gray-400"
+            className="bg-purple-300 text-white px-4 py-2 rounded-lg hover:bg-green-600 disabled:bg-gray-400"
           >
             {insightsLoading ? "Analyzing..." : "Weekly Insights"}
           </button>
